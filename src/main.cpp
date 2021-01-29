@@ -32,19 +32,19 @@ void loop() {
         if (token) { Serial.print(token); }           // Endekennung nicht ausgeben
       #endif
       switch (token) {                                // Zeichen auswerten
-        case '.':                                     // Punkt ?
+        case 0x2E:                                    // Punkt ?
           uiHold = tick + HOLD_POINT;                 // Wartezeit setzen
           digitalWrite(LED_PIN, HIGH);                // LED schalten
         break;  
-        case '_':
+        case 0x5F:
           uiHold = tick + HOLD_UNDER;
           digitalWrite(LED_PIN, HIGH);
         break;  
-        case ' ':
+        case 0x20:
           uiHold = tick + HOLD_SPACE;
           digitalWrite(LED_PIN, LOW);
         break;  
-        case '\0':                                    // Endekennung
+        case 0x00:                                    // Endekennung
           uiHold = tick + HOLD_NEXT;                  // Pause setzen
           digitalWrite(LED_PIN, LOW);
           pszLoop = szBuffer;                         // Zeiger auf Anfang
